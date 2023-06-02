@@ -28,10 +28,11 @@ app.use(express.static(publicDirectoryPath));
 
 io.on("connection", (socket) => {
   console.log("New WebSocket connection");
-  // console.log(socket);
+  console.log(socket);
 
   socket.on("join", (options, callback) => {
     var address = socket.handshake.address;
+    console.log(address)
     const { error, user } = addUser({ id: socket.id, ...options, address });
     if (error) {
       return callback(error);
@@ -58,6 +59,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("sendMessage", (message, callback) => {
+console.log(message) ;
     const user = getUser(socket.id);
     const filter = new Filter();
 
