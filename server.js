@@ -28,11 +28,12 @@ app.use(express.static(publicDirectoryPath));
 
 io.on("connection", (socket) => {
   console.log("New WebSocket connection");
-  console.log(socket);
 
   socket.on("join", (options, callback) => {
     var address = socket.handshake.address;
-    console.log(address)
+ console.log("********************************** console.log(socket.id)*******************");
+    console.log(socket.id);
+console.log("********************************** console.log(socket.id)*******************");
     const { error, user } = addUser({ id: socket.id, ...options, address });
     if (error) {
       return callback(error);
