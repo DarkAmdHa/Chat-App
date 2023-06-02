@@ -20,7 +20,8 @@ const io = socketio(server);
 
 require("dotenv").config();
 
-const port = 8080;
+const port = process.env.PORT || 3000;
+
 const publicDirectoryPath = path.join(__dirname, "./public");
 
 app.use(express.static(publicDirectoryPath));
